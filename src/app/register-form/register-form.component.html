@@ -1,0 +1,77 @@
+<div class="container">
+    <h1>Register Form</h1>
+    <div class="form">
+
+        <form class="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+
+
+            <input formControlName="firstName" type="text" class="form-control" placeholder="First Name">
+            <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name">
+            <input formControlName="streetAddress1" type="text" class="form-control" placeholder="Street Address1">
+            <input formControlName="streetAddress2" type="text" class="form-control" placeholder="Street Address2">
+            <input formControlName="zipCode" type="text" class="form-control" placeholder="ZipCode">
+            <input formControlName="city" type="text" class="form-control" placeholder="City">
+            <input formControlName="state" type="text" class="form-control" placeholder="State">
+            <input formControlName="primaryPhoneNumber" type="text" class="form-control"
+                placeholder="Primary Phone Number">
+            <input formControlName="alternatePhoneNumber" type="text" class="form-control"
+                placeholder="Alternate Phone Number">
+            <input formControlName="fax" type="text" class="form-control" placeholder="Fax">
+            <input formControlName="email" type="text" class="form-control" placeholder="Email">
+            <div
+                *ngIf="registerForm.get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                <div class="error" *ngIf="registerForm.get('email').hasError('required')">
+                    Email is required.
+                </div>
+                <div class="error" *ngIf="registerForm.get('email').hasError('email')">
+                    Invalid email format.
+                </div>
+            </div>
+
+
+            <input formControlName="userName" type="text" class="form-control" placeholder="user Name">
+
+            <input formControlName="password" type="password" class="form-control" placeholder="Password">
+            <div
+                *ngIf="registerForm.get('password').invalid && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                <div class="error" *ngIf="registerForm.get('password').hasError('required')">
+                    password is required.
+                </div>
+                <div class="error" *ngIf="registerForm.get('password').hasError('minlength')">
+                    Password should have at least 5 characters.
+                </div>
+                <div class="error" *ngIf="registerForm.get('password').hasError('maxlength')">
+                    Password should have at most 8 characters.
+                </div>
+            </div>
+            <input formControlName="reEnterPassword" type="password" class="form-control"
+                placeholder="Re-Enter Password">
+            <div
+                *ngIf="registerForm.get('reEnterPassword').invalid && (registerForm.get('reEnterPassword').dirty || registerForm.get('reEnterPassword').touched)">
+                <div class="error" *ngIf="registerForm.get('reEnterPassword').hasError('reEnterPassword')">
+                    password is required.
+                </div>
+                <div class="error" *ngIf="registerForm.get('reEnterPassword').hasError('minlength')">
+                    Password should have at least 5 characters.
+                </div>
+                <div class="error" *ngIf="registerForm.get('reEnterPassword').hasError('maxlength')">
+                    Password should have at most 8 characters.
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <button [disabled]="!registerForm.valid">Submit</button>
+                </div>
+                <div class="col">
+                    <button>Cancel</button>
+                </div>
+
+            </div>
+
+            <!-- <span class="message">
+                <a routerLink="/registerForm">Register</a></span> -->
+        </form>
+    </div>
+</div>
